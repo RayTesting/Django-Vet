@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('apps.home.urls'), name='home'),
     path('management/', include('apps.administrator.urls'), name='management'),
     path('adoption/', include('apps.adoption.urls'), name='adoption'),
+    path('services/', include('apps.services.urls'), name='services'),
     path('store/', include('apps.store.urls'), name='store'),
 ]
