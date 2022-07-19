@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+    <form method="post" action="">
+        {% csrf_token %}
+        <div>
+            <label for="">Username: <input name="username" class="border border-red-600" type="text"></label><br>
+            <label for="">Password: <input name="password" class="border border-red-600" type="password"></label>
+        </div>
+        <button class="border border-red-600" type="submit">Login</button>
+    </form>
+
+    {% if msg %}
+        <span>{{msg}}</span>
+    {% endif %}
+{% endblock content %}
+

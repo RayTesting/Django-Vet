@@ -23,4 +23,5 @@ urlpatterns = [
     path('adoption/', include('apps.adoption.urls'), name='adoption'),
     path('services/', include('apps.services.urls'), name='services'),
     path('store/', include('apps.store.urls'), name='store'),
+    path('auth/', include('apps.authentication.urls'), name="auth")
 ]

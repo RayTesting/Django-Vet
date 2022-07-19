@@ -49,6 +49,7 @@ PROJECT_APPS = [
     'apps.adoption',
     'apps.store',
     'apps.services',
+    'apps.authentication'
 ]
 
 THIRD_APPS = []
