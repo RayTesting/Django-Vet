@@ -1,7 +1,15 @@
 <header>
     <nav>
-        <ul>
+        <ul class="flex justify-center flex-row gap-10">
             <li>Inicio</li>
+            <li>
+                {% if request.user.is_authenticated %}
+                    <span>{{request.user}}</span>
+                    <a href="{% url 'auth_logout' %}">Cerrar Sesión</a>
+                    {% else %}
+                    <a href="{% url 'auth_login' %}">Iniciar sesión</a>
+                {% endif %}
+            </li>
         </ul>
     </nav>
 </header>
