@@ -1,5 +1,20 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
+
 
 {% block content %}
-    <h1>Home</h1>
+    <section class="w-full">
+        <div class="swiper h-fit">
+            <div class="swiper-wrapper">
+                {% for slide in settings.slides.all  %}
+                    <div class="swiper-slide">
+                        <img class="object-cover w-full h-[20rem] sm:h-[30rem] md:h-[46rem]" src="{{slide.image.url}}" alt="">
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+        </div>
+    </section>
 {% endblock content %}

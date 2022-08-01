@@ -10,10 +10,6 @@
         <link rel="stylesheet" href={% static 'css/styles.css' %}>
     {% endblock stylesheets %}
 
-    {% block scripts %}
-        <script src={% static 'js/scripts.js' %}></script>
-    {% endblock scripts %}
-
     {% block cdn %}
         {% comment %} tailwind {% endcomment %}
         <script src="https://cdn.tailwindcss.com"></script>
@@ -27,6 +23,12 @@
         <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css"/>
         <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
         {% comment %} swiperjs {% endcomment %}
+
+        {% comment %} Google Fonts  {% endcomment %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap" rel="stylesheet">
+        {% comment %} Google Fonts  {% endcomment %}
 
     {% endblock cdn %}
 
@@ -42,5 +44,8 @@
     
     {% include 'includes/footer.html' %}
 
+    {% block scripts %}
+        <script src={% static 'js/scripts.js' %}></script>
+    {% endblock scripts %}
 </body>
 </html>
