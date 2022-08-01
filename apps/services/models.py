@@ -1,5 +1,5 @@
 from django.db import models
-from apps.home.models import Customer
+from apps.home.models import BaseItem, Customer
 
 # Create your models here.
 img_path = 'static/assets/media/services/'
@@ -8,7 +8,7 @@ class ServiceImage(models.Model):
     image = models.ImageField(upload_to=f'{img_path}ServiceImages')
 
     def __str__(self):
-        return self.image
+        return self.image.name
 
 class ServiceCategory(models.Model):
     category = models.CharField(max_length=100)
@@ -17,10 +17,7 @@ class ServiceCategory(models.Model):
     def __str__(self):
         return self.category
     
-class Service(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.TextField()
-    price = models.DecimalField(max_digits=5, decimal_places=2)
+class Service(BaseItem):
     images = models.ManyToManyField(ServiceImage)
     category = models.ForeignKey(ServiceCategory, on_delete=models.PROTECT, null=True)
 
