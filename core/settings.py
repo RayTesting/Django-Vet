@@ -227,6 +227,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.home.context_processors.get_logo',
+                'apps.home.context_processors.get_urls',
             ],
         },
     },
