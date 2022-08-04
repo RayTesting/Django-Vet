@@ -30,7 +30,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://7cf2-2806-103e-1d-d3d0-dc68-5c2d-1cc7-5251.ngrok.io']
 
 
 # Application definition
@@ -169,7 +170,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": True,
+    "related_modal_active": False,
 
     #############
     # UI Tweaks #
@@ -226,6 +227,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'apps.home.context_processors.get_logo',
+                'apps.home.context_processors.get_urls',
             ],
         },
     },

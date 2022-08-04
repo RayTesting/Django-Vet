@@ -1,5 +1,8 @@
+from itertools import product
 from django.http import HttpResponse
 from django.shortcuts import render
+from .models import SiteSettings
+from apps.store.models import Product, ProductCategory
 
 from apps.store.models import ProductCategory, Product
 
@@ -9,12 +12,10 @@ from .models import SiteSettings
 def index(request):
     settings = SiteSettings.objects.first()
     product_categories = ProductCategory.objects.all()
-    recommended = Product.objects.all()[:10:-1]
+    recomended = Product.objects.all()[:10:-1]
     context = {
-        "settings":settings,
+        "settings": settings,
         "product_categories": product_categories,
-        "recommended": recommended,
+        "recomended": recomended
     }
-
-
     return render(request, 'home/index.html',context)

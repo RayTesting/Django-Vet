@@ -1,3 +1,4 @@
+from email.policy import default
 from django.db import models
 from apps.adoption.models import PetKind
 from apps.home.models import BaseItem

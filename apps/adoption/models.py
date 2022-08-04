@@ -1,3 +1,4 @@
+from telnetlib import STATUS
 from django.db import models
 from apps.home.models import Customer
 

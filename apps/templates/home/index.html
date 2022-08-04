@@ -2,19 +2,93 @@
 {% load static %}
 
 
+{% load static %}
+
 {% block content %}
     <section class="w-full">
         <div class="swiper h-fit">
             <div class="swiper-wrapper">
-                {% for slide in settings.slides.all  %}
+                {% for slide in settings.slides.all %}
                     <div class="swiper-slide">
-                        <img class="object-cover w-full h-[20rem] sm:h-[30rem] md:h-[46rem]" src="{{slide.image.url}}" alt="">
+                        <img class="object-contain lg:object-cover w-full h-[20rem] sm:h-[30rem] md:h-[46rem] " src="{{slide.image.url}}" alt="">
                     </div>
                 {% endfor %}
             </div>
-            <div class="swiper-pagination"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
         </div>
     </section>
+
+    <section class="p-10 font-['Montserrat'] text-center">
+        <h1 class="text-4xl md:text-7xl text-[#113E21] font-bold ">{{settings.header}}</h1>
+        <p class="text-xl md:text-3xl text-[#b38b59] font-bold mt-5 md:mt-10">{{settings.description}}</p>
+    </section>
+
+    <section class="w-full">
+        <div class="swiper">
+            <div class="swiper-items">
+                <div class="swiper-wrapper">
+                    {% for category in product_categories %}
+                        <div class="swiper-slide">
+                            <div class="bg-cover bg-center w-full h-[30rem] sm:h-[40rem] md:h-[66rem] bg-center flex justify-center items-center bg-no-repeat" style="background-image:url('{{category.image.url}}');">
+                                <h2 class="text-5xl lg:text-7xl text-white font-bold" style="text-shadow: black 1px 1px 30px">{{category.category|upper}}</h2>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="swiper-button-prev text-[#113E21] font-bold"></div>
+                <div class="swiper-button-next text-[#113E21] font-bold"></div>
+            </div>
+        </div>
+    </section>
+
+    <section class="w-full h-[60vh] md:h-screen flex items-center justify-center bg-fixed bg-center bg-no-repeat bg-cover bg-[url('https://arc-anglerfish-arc2-prod-infobae.s3.amazonaws.com/public/NVWQSYGX3RC7ZBEHLPLDVXA3PU.jpg')]">
+        <a href={% url 'adoption_index' %}>
+            <span data-aos="fade-up" class="p-3 py-5 md:p-10 bg-[#113E21] bg-opacity-90 rounded text-white font-bold text-center font-['Montserrat'] flex flex-col md:flex-row justify-center">
+                <span >Check out our adoption services</span>
+                <i class="bi bi-arrow-right-circle ml-3"></i>
+            </span>
+        </a>
+    </section>
+
+    <section class="w-full h-fit mt-10">
+        <div class="grid w-full grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
+            <a href={% url 'store_index' %}>
+                <div class="card">
+                    <img class="card-image" src="{{settings.products_image}}" alt="">
+                </div>
+            </a>
+            <a href={% url 'services_index' %}>
+                <div class="card">
+                    <img class="card-image" src="{{settings.services_image}}" alt="">
+                </div>
+            </a>
+            <a class="sm:col-span-2 md:col-span-1" href={% url 'adoption_index' %}>
+                <div class="card">
+                    <img class="card-image" src="{{settings.adoption_image}}" alt="">
+                </div>
+            </a>
+            
+        </div>
+    </section>
+
+    <section class="w-full p-10">
+        <div class="flex flex-wrap justify-center gap-5 items-center">
+            <img class="object-contain w-28 md:w-48" src="{% static 'assets/images/home/certificate.png' %}" alt="">
+            <img class="object-contain w-28 md:w-48" src="{% static 'assets/images/home/certificate2.png' %}" alt="">
+        </div>
+    </section>
+
+    <section class="w-full p-10">
+        <h3 class="text-center text-2xl md:text-4xl lg:text-5xl mb-10 font-['Montserrat'] font-bold">We recommend</h3>
+        <div class="flex justify-center flex-wrap items-center gap-8">
+            {% for item in recomended  %}
+                <div data-aos="fade-up" class="flex flex-col items-center justify-center w-40 scale">
+                    <a href="#">
+                        <img class="object-cover w-32" src="{{item.images.all.0.image.url}}" alt="{{item.name}}">
+                    </a>
+                    <span class="font-['Montserrat'] text-center md:text-2xl font-medium hover:text-[#b38b59]"><a href="#">{{item.name}}</a></span>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+
 {% endblock content %}
