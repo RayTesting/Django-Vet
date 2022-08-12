@@ -1,0 +1,12 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+
+    <div class="flex flex-col gap-3 p-3">
+        <span>{{account.user.username}}</span>
+        <span>{{account.user.email}}</span>
+        <span>{{account.name}} {{account.last_name}}</span>
+        <span>{{account.birth}}</span>
+    </div>
+
+{% endblock content %}

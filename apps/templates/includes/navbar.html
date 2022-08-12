@@ -27,7 +27,7 @@
             <div id="user_links" class="hidden rounded bg-[#f0f0f0] w-1/2  md:w-fit py-5 ">
                 <ul class="flex justify-center items-center flex-col font-bold p-1 md:flex-row">
                     {% if request.user.is_authenticated %}
-                        <li class="w-full text-center py-3 px-6 "><a class="hover:text-[#b38b59]" href="{% url 'home_index' %}">{{request.user}}</a></li>
+                        <li class="w-full text-center py-3 px-6 "><a class="hover:text-[#b38b59]" href="{% url 'auth_account' %}">{{request.user}}</a></li>
                         <li class="w-full text-center py-3 px-6"><a class="hover:text-[#b38b59]" href="{% url 'auth_logout' %}">Logout</a></li>
                             {% else %}
                         <li class="w-full text-center py-3 px-6"><a class="hover:text-[#b38b59]" href="{% url 'auth_login' %}">Login</a></li>

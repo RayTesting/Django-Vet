@@ -1,8 +1,13 @@
+from hashlib import new
+from sys import prefix
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
-from .forms import LoginForm, AuthForm, SignUpForm
+
+from ..home.models import Customer
+from .forms import CustomerForm, LoginForm, AuthForm, SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
@@ -30,6 +35,9 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                next = request.GET.get('next')
+                if next: 
+                    return redirect(next)
                 return redirect('home_index')
             else:
                 msg = "USERNAME OR PASSWORD INCORRECT"
@@ -46,19 +54,25 @@ def logout_view(request):
 
 
 def signup(request):
-    form = SignUpForm(request.POST or None)
+    signup_form = SignUpForm(request.POST or None, prefix='signup')
+    customer_form = CustomerForm(request.POST or None, prefix='customer')
     msg = None
 
     if request.method == "POST":
-        if form.is_valid():
-            user_form = form.save()
-            username = form.cleaned_data.get('username')
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password1')
+        if signup_form.is_valid() and customer_form.is_valid():
+
+            user_form = signup_form.save()
+            new_customer = customer_form.save(commit=False)
+            
+            username = signup_form.cleaned_data.get('username')
+            email = signup_form.cleaned_data.get('email')
+            password = signup_form.cleaned_data.get('password1')
 
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                new_customer.user = user
+                new_customer.save()
                 return redirect('home_index')
             else:
                 msg = "ERROR AL AUTENTICAR"
@@ -67,8 +81,17 @@ def signup(request):
             msg = 'Error'
     
     context = {
-        "form": form,
+        "signup_form": signup_form,
+        "customer_form": customer_form,
         "msg": msg,
     }
 
     return render(request,'authentication/signup.html',context)
+
+@login_required(login_url='auth_login')
+def account_details(request):
+    account = Customer.objects.get(user=request.user)
+    context = {
+        "account": account
+    }
+    return render(request,'authentication/account_details.html',context)

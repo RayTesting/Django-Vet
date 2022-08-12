@@ -2,5 +2,5 @@ from . import views
 from django.urls import include, path
 
 urlpatterns = [
-    path('', views.index, name='store_index')
+    path('', views.ProductsList.as_view(), name='store_index')
 ]

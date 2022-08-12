@@ -3,6 +3,8 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
+from ..home.models import Customer
+
 class LoginForm(forms.Form):
     username = forms.CharField(
         label='Usuario',
@@ -74,6 +76,44 @@ class SignUpForm(UserCreationForm):
     class Meta:
         model= User
         fields = ('username','email','password1','password2')
+
+class CustomerForm(forms.ModelForm):
+
+    name = forms.CharField(
+        label='Name',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Name",
+                "class": "border border-red-600",
+            }
+        )
+    )
+
+    last_name = forms.CharField(
+        label='Last name',
+        required=True,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Last name",
+                "class": "border border-red-600",
+            }
+        )
+    )
+
+    birth = forms.DateField(
+        required=False,
+        widget=forms.DateInput(
+            attrs={
+                "type":"date",
+                "class": "border border-red-600",
+            }
+        )
+    )
+
+    class Meta:
+        model = Customer
+        fields = ('name','last_name','birth')
 
 class AuthForm(AuthenticationForm):
     username = forms.CharField(
