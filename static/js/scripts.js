@@ -35,6 +35,9 @@ const handleWindowSize = () => {
     if (window.innerWidth >= 768){
         if (navLinks.classList.contains('hidden')){
             navLinks.classList.remove('hidden')
+            if(!navButtonIcon.classList.contains('bi-x-lg')){
+              navButtonIcon.classList.add('bi-x-lg')
+            }
         }
     }
 }
