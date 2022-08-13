@@ -1,14 +1,31 @@
 {% extends 'layouts/base.html' %}
+{% load static %}
 
 {% block content %}
-    <form method="post" action="">
-        {% csrf_token %}
-        <div>
-            {{form.as_p}}
-        </div>
-        <button class="border border-red-600" type="submit">Login</button>
-    </form>
     
+    <section data-aos="fade-left" class="p-3 md:p-0 h-[40rem] lg:h-[90vh] md:flex w-full">
+        <img class="hidden md:inline w-1/2 object-cover" src="{% static 'assets/images/login-img.jpg' %}" alt="">
+        <div class="p-3 sm:p-20 xl:p-40 lg:w-1/2 h-full">
+            <span class="block text-5xl text-center text-[#b38b59] font-['Montserrat'] font-bold">Sign In</span>
+            <span class="block text-md text-center mt-2">Enter your credentials</span>
+            <div class="my-5">
+                <form method="post" action="">
+                    {% csrf_token %}
+                    <div class="flex flex-col gap-1">
+                        <div>
+                            <label for="Username">User</label><br>
+                            {{form.username}}
+                        </div>
+                        <div>
+                            <label for="Password">Password</label><br>
+                            {{form.password}}
+                        </div>
+                    </div>
+                    <button class="bg-[#113E21] text-white font-bolder w-full rounded p-3 my-5 sm:my-10 sm:w-28" type="submit">Login</button>
+                </form>
+            </div>
+        </div>
+    </section>
 
     {% if msg %}
         <span>{{msg}}</span>

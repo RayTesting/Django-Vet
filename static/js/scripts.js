@@ -110,3 +110,30 @@ const swiperItems = new Swiper('.swiper-items', {
       }
     }
   });
+
+
+// SIGNUP //
+const userRegisterContainer = document.getElementById('user-register-container')
+const customerRegisterContainer = document.getElementById('customer-register-container')
+const signupNextBtn = document.getElementById('signup-next-btn')
+const signupSubmitBtn = document.getElementById('signup-submit-btn')
+const signupBackBtn = document.getElementById('signup-back-btn')
+
+
+signupNextBtn?.addEventListener('click', () => {
+  userRegisterContainer.classList.add('hidden')
+  customerRegisterContainer.classList.remove('hidden')
+  signupNextBtn.classList.add('hidden')
+  signupSubmitBtn.classList.remove('hidden')
+  signupBackBtn.classList.remove('hidden')
+})
+
+signupBackBtn?.addEventListener('click', () => {
+  userRegisterContainer.classList.remove('hidden')
+  customerRegisterContainer.classList.add('hidden')
+  signupNextBtn.classList.remove('hidden')
+  signupSubmitBtn.classList.add('hidden')
+  signupBackBtn.classList.add('hidden')
+})
+
+// SIGNUP //

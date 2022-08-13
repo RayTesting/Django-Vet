@@ -1,59 +1,79 @@
 {% extends 'layouts/base.html' %}
 
+{% load static %}
+
 {% block content %}
-    <form method="post" action="">
-        {% csrf_token %}
-        <div class="flex w-full h-fit p-10">
-            <div class="w-1/2 border border-slate-500 flex flex-col gap-3 p-5">
-                <div>
-                    <label for="Username">Username</label>
-                    {{signup_form.username}}
-                    {{signup_form.username.errors}}
-                </div>
-                <div>
-                    <label for="Email">Email</label>
-                    {{signup_form.email}}
-                </div>
-                <div>
-                    <label for="Password1">Password</label>
-                    {{signup_form.password1}}
-                    {{signup_form.password1.errors}}
-                </div>
-                <div>
-                    <label for="Password2">Confirm Password</label>
-                    {{signup_form.password2}}
-                    {{signup_form.password2.errors}}
-                </div>
-            </div>
 
+<section data-aos="fade-right" class="p-3 md:p-0 h-full  md:flex w-full">
+    <div class="p-3 sm:p-20 xl:p-40 lg:w-1/2 h-full">
+        <span class="block text-5xl text-center text-[#b38b59] font-['Montserrat'] font-bold">Create account</span>
+        <span class="block text-md text-center mt-2">Become a customer</span>
+        <div class="my-5">
+            <form method="post" action="">
+                {% csrf_token %}
+                <div class="flex flex-col md:flex-row w-full h-full gap-5 p-3">
 
-            <div class="w-1/2 border border-red-500">
-                <div>
-                    <label for="Name">Name</label>
-                    {{customer_form.name}}
-                    {{customer_form.name.errors}}
-                </div>
-                <div>
-                    <label for="Last_name">Last name</label>
-                    {{customer_form.last_name}}
-                    {{customer_form.last_name.errors}}
-                </div>
-                <div>
-                    <label for="Birth">Birth</label>
-                    {{customer_form.birth}}
-                    {{customer_form.birth.errors}}
-                </div>
-            </div>
+                    <button id="signup-back-btn" class="hidden text-left" type="button"><i class="bi bi-arrow-left-circle"></i></button>
 
+                    <div id="user-register-container" class="w-full md:w-1/2 flex flex-col gap-1">
+                        <div>
+                            <label for="Username">Username</label><br>
+                            {{signup_form.username}}
+                            {{signup_form.username.errors}}
+                        </div>
 
+                        <div>
+                            <label for="Email">Email</label><br>
+                            {{signup_form.email}}
+                        </div>
+
+                        <div>
+                            <label for="Password1">Password</label><br>
+                            {{signup_form.password1}}
+                            {{signup_form.password1.errors}}
+                        </div>
+
+                        <div>
+                            <label for="Password2">Confirm Password</label><br>
+                            {{signup_form.password2}}
+                            {{signup_form.password2.errors}}
+                        </div>
+                    </div>
+        
+        
+                    <div id="customer-register-container" class="hidden w-full md:w-1/2 flex flex-col gap-1">
+                        <div>
+                            <label for="Name">Name</label><br>
+                            {{customer_form.name}}
+                            {{customer_form.name.errors}}
+                        </div>
+
+                        <div>
+                            <label for="Last_name">Last name</label><br>
+                            {{customer_form.last_name}}
+                            {{customer_form.last_name.errors}}
+                        </div>
+
+                        <div>
+                            <label for="Birth">Birth</label><br>
+                            {{customer_form.birth}}
+                            {{customer_form.birth.errors}}
+                        </div>
+                    </div>
+                </div>
+        
+        
+                {% if msg %}
+                    <span class="text-red-400">{{msg}}</span>
+                {% endif %}
+                <button id="signup-next-btn" class="border border-[#113E21] text-[#113E21] text-xl font-bolder w-full rounded p-3 my-5 sm:my-10 sm:w-28" type="button">Next</button>
+                <button id="signup-submit-btn" class="hidden bg-[#113E21] text-white text-xl font-bolder w-full rounded p-3 my-5 sm:my-10 sm:w-28" type="submit">Sign Up</button>
+            </form>
         </div>
-
-
-        {% if msg %}
-            <span class="text-red-400">{{msg}}</span>
-        {% endif %}
-        <button class="btn border border-red-500" type="submit">SignUp</button>
-    </form>
+    </div>
+    <img class="hidden md:inline w-1/2 object-cover" src="{% static 'assets/images/signup-img.jpg' %}" alt="">
+</section>
+    
 
 {% endblock content %}
 

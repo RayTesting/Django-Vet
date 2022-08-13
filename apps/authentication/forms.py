@@ -18,7 +18,7 @@ class LoginForm(forms.Form):
     )
 
     password = forms.CharField(
-        label='Contraseña',
+        label='Password',
         required=True,
         widget=forms.PasswordInput(
             attrs={
@@ -35,7 +35,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.TextInput(
            attrs={
                 "placeholder":"User",
-                "class":"border border-slate-600"
+                "class":"border border-[#113E21] rounded w-full p-2"
             } 
         )
     )
@@ -46,7 +46,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.EmailInput(
             attrs={
                 "placeholder":"Email",
-                "class":"border border-slate-600"
+                "class":"border border-[#113E21] rounded w-full p-2"
             } 
         )
     )
@@ -57,7 +57,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.PasswordInput(
            attrs={
                 "placeholder":"Password",
-                "class":"border border-slate-600"
+                "class":"border border-[#113E21] rounded w-full p-2"
             } 
         )
     )
@@ -68,7 +68,7 @@ class SignUpForm(UserCreationForm):
         widget=forms.PasswordInput(
            attrs={
                 "placeholder":"Password",
-                "class":"border border-red-600"
+                "class":"border border-[#113E21] rounded w-full p-2"
             } 
         )
     )
@@ -85,7 +85,7 @@ class CustomerForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Name",
-                "class": "border border-red-600",
+                "class":"border border-[#113E21] rounded w-full p-2"
             }
         )
     )
@@ -96,7 +96,7 @@ class CustomerForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Last name",
-                "class": "border border-red-600",
+                "class":"border border-[#113E21] rounded w-full p-2"
             }
         )
     )
@@ -106,7 +106,7 @@ class CustomerForm(forms.ModelForm):
         widget=forms.DateInput(
             attrs={
                 "type":"date",
-                "class": "border border-red-600",
+                "class":"border border-[#113E21] rounded w-full p-2"
             }
         )
     )
@@ -117,23 +117,23 @@ class CustomerForm(forms.ModelForm):
 
 class AuthForm(AuthenticationForm):
     username = forms.CharField(
-        label='Usuario',
+        label='User',
         required=True,
         widget=forms.TextInput(
             attrs={
-                "placeholder":"User",
-                "class":"border border-slate-600"
+                "placeholder":"Enter your username",
+                "class":"border border-[#113E21] rounded w-full p-2"
             }
         )
     )
 
     password = forms.CharField(
-        label='Contraseña',
+        label='Password',
         required=True,
         widget=forms.PasswordInput(
             attrs={
-                "placeholder":"Contraseña",
-                "class":"border border-slate-600"
+                "placeholder":"Enter your password",
+                "class":"border border-[#113E21] rounded w-full p-2"
             }
         )
     )
