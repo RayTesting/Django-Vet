@@ -1,8 +1,9 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from .models import Product
 from django.core.paginator import Paginator  
+from django.http import Http404
 
 # Create your views here.
 def index(request):
@@ -19,7 +20,18 @@ class ProductsList(ListView):
     model = Product
     template_name = 'store/index.html'
     context_object_name = 'products'
-    
 
+def product_details(request, product_id):
+
+    try:
+        product = Product.objects.get(id=product_id)
+
+        context = {
+            "product": product,
+        }
+
+        return render(request,'store/product_details.html', context)
+    except Product.DoesNotExist:
+        raise Http404('Product Not found')
     
 

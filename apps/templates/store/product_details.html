@@ -1,0 +1,93 @@
+{% extends 'layouts/base.html' %}
+
+{% block breadcrumb %}
+    <li class="inline-flex items-center hover:text-gray-400">
+        <div class="flex items-center">
+        <svg class="w-6 h-6 text-[#113E21]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <a href="{% url 'store_index' %}" class="inline-flex items-center">Store</a>
+        </div>
+    </li>
+    <li aria-current="page">
+        <div class="flex items-center">
+        <svg class="w-6 h-6 text-[#113E21]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="ml-1 text-sm font-medium md:ml-2">{{product.name}}</span>
+        </div>
+    </li>
+{% endblock breadcrumb %}
+
+
+
+{% block content %}
+    
+<section>
+    {% if product.images.all.count > 1 %}
+        <div class="swiper">
+            <div class="swiper-product">
+                <div class="swiper-wrapper">
+                    {% for image in product.images.all  %}
+                    <div class="swiper-slide">
+                        <img src="{{image.image.url}}" alt="">
+                    </div>
+                    {% endfor %}
+        
+                </div>
+                <div class="swiper-button-prev text-[#113E21] font-bold"></div>
+                <div class="swiper-button-next text-[#113E21] font-bold"></div>
+            </div>
+        </div>
+        {% else %}
+        <div class="flex justify-center items-center">
+            <img class="object-contain text-center w-80 lg:w-96" src="{{product.images.all.0.image.url}}" alt="{{product.name}} image">
+        </div>
+    {% endif %}
+
+    <div class="px-3 py-10 md:px-10 ">
+        <div class="font-bold font-['Montserrat'] text-[#113E21] text-4xl md:text-5xl">
+            <h2 class="inline">{{product.name}}</h2> 
+            <span class="text-[#b38b59]">${{product.price}}</span>
+        </div>
+        <div class="flex flex-wrap md:justify-between gap-5 ">
+            <div class="my-5">
+                <span class="text-xl">{{product.description}}</span>
+                {% if product.settings %}
+                    {% if product.settings.variants %}
+                        <div class="my-4">
+                            <label for="variants">Variants:</label>
+                            <select class="w-32 border border-[#113E21] rounded" name="variants">
+                                {% for option in product.settings.variants  %}
+                                    <option value="{{option}}">{{option}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    {% endif %}
+
+                    {% if product.settings.color %}
+                        <span class="block text-2xl my-4">Colors:</span>
+                        <div class="flex justify-start gap-2 items-center">
+                            {% for color in product.settings.color  %}
+                                <div class="w-10 h-10 rounded bg-{{color}}-700">
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            <div class="bg-[#F0F0F0] rounded-xl px-20 py-5 w-full sm:w-fit h-full">
+                <h5 class="text-2xl text-center">Quantity</h5>
+                <div class="flex justify-center items-center gap-5 text-2xl">
+                    <i class="bi bi-dash-circle "></i>
+                    <span id="product_quantity" class="text-5xl">1</span>
+                    <i class="bi bi-plus-circle"></i>
+                </div>
+                <hr class="border border-gray-400 rounded mt-3">
+                <div>
+                    <span>Total:</span>
+                    <span id="total">${{product.price}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
