@@ -78,7 +78,40 @@ const swiper = new Swiper('.swiper', {
     },
   });
   
-const swiperItems = new Swiper('.swiper-items', {
+  const swiperItems = new Swiper('.swiper-items', {
+    // Optional parameters
+    autoplay: {
+        delay: 5000,
+      },
+    loop: true,
+  
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+  
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+    breakpoints: {
+      
+      640: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView:3,
+      }
+    }
+  });
+
+const swiperProduct = new Swiper('.swiper-product', {
     // Optional parameters
     autoplay: {
         delay: 5000,

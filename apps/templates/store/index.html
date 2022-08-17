@@ -1,5 +1,14 @@
 {% extends 'layouts/base.html' %} 
 
+{% block breadcrumb %}
+    <li class="inline-flex items-center">
+        <div class="flex items-center">
+        <svg class="w-6 h-6 text-[#113E21]" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+        <span class="inline-flex items-center">Store</span>
+        </div>
+    </li>
+{% endblock breadcrumb %}
+
 
 {% block content %}
 <h2 class=" p-10 font-['Montserrat'] text-2xl text-center md:text-7xl text-[#113E21] font-bold">Checkout our products 🐶😺</h2>
@@ -39,7 +48,7 @@
                         </div>
 
                         <div class="mt-4 w-full">
-                            <a class="block bg-[#113E21] hover:bg-[#b38b59] text-center text-white font-bold py-2 px-4 rounded" href="#">Details</a>
+                            <a class="block bg-[#113E21] hover:bg-[#b38b59] text-center text-white font-bold py-2 px-4 rounded" href="{% url 'store_product_details' product.id %}">Details</a>
                         </div>
                     
                     </div>
