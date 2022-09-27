@@ -1,5 +1,5 @@
 <header class="">
-    <nav id="navbar" class="py-5 flex flex-wrap flex-col justify-center items-center mx-auto w-full max-w-[1920px] md:flex-row md:justify-around">
+    <nav id="navbar" class=" md:relative md:h-[200px] py-5 flex flex-wrap flex-col justify-center items-center mx-auto w-full max-w-[1920px] md:flex-row md:justify-around">
 
         <div class="flex justify-around w-full md:w-fit">
             <a href="{% url 'home_index' %}">
@@ -9,7 +9,7 @@
         </div>
         
     
-        <div id="nav_links" class="hidden w-full flex flex-col items-center md:items-end md:w-fit py-5 ">
+        <div id="nav_links" class="hidden relative w-full md:w-fit py-5 ">
             <ul class="flex justify-center items-center flex-col font-bold p-1 md:flex-row">
                 <li class="w-full text-center py-3 px-6 rounded-lg hover:bg-[#113E21] hover:text-white"><a href="{% url 'home_index' %}">Home</a></li>
                 <li class="w-full text-center py-3 px-6 rounded-lg hover:bg-[#113E21] hover:text-white"><a href="{% url 'store_index' %}">Products</a></li>
@@ -24,7 +24,7 @@
                 </li>
             </ul>
 
-            <div id="user_links" class="hidden rounded bg-[#f0f0f0] w-1/2  md:w-fit py-5 ">
+            <div id="user_links" class="hidden rounded bg-[#f0f0f0] w-1/2 md:w-fit py-5 absolute z-10 mx-auto right-0 left-0 md:left-auto  md:mx-0">
                 <ul class="flex justify-center items-center flex-col font-bold p-1 md:flex-row">
                     {% if request.user.is_authenticated %}
                         <li class="w-full text-center py-3 px-6 "><a class="hover:text-[#b38b59]" href="{% url 'auth_account' %}">{{request.user}}</a></li>
