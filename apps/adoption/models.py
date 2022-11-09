@@ -27,8 +27,8 @@ class PetImage(models.Model):
         return self.image.name
     
 
-AGE_CHOICES = (('type','years'),('type','months'))
-STATUS_CHOICES = (('type','in adoption'), ('type','adopted'))
+AGE_CHOICES = (('years','years'),('months','months'))
+STATUS_CHOICES = (('in adoption','in adoption'), ('adopted','adopted'))
 
 class Pet(models.Model):
     name = models.CharField(max_length=100)
