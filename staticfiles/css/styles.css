@@ -1,0 +1,38 @@
+section{
+    margin: 0 auto 0 auto;
+    width: 100%;
+    max-width: 1920px;
+}
+
+.no-wrapper{
+    margin: 0;
+    width: 100%;
+    max-width: none;
+}
+
+.card{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.card-image{
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .75s;
+}
+
+.card:hover .card-image{
+    transform: scale(1.05);
+}
+
+.scale{
+    transition: transform .75s;
+}
+
+.scale:hover{
+    transform: scale(1.15);
+}
+
