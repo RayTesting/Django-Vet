@@ -27,8 +27,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='My secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
-CSRF_TRUSTED_ORIGINS = []
+ALLOWED_HOSTS = ['127.0.0.1','localhost']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1','http://localhost']
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
@@ -201,7 +201,7 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -300,13 +300,13 @@ STATICFILES_DIRS = [
    os.path.join(BASE_DIR, "static")
 ]
 if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
+    print(STATIC_ROOT)
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, '')
 print(
     os.environ,
     ALLOWED_HOSTS,
     CSRF_TRUSTED_ORIGINS,
-    DATABASES,
-    STATIC_ROOT
+    DATABASES
 )
