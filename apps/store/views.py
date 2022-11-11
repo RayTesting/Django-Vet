@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from .models import Product
 from django.core.paginator import Paginator  
 from django.http import Http404
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def index(request):
@@ -21,6 +22,7 @@ class ProductsList(ListView):
     template_name = 'store/index.html'
     context_object_name = 'products'
 
+@login_required(login_url='/auth/login')
 def product_details(request, product_id):
 
     try:
