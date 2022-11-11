@@ -302,6 +302,8 @@ STATICFILES_DIRS = [
 if not DEBUG:
     STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
     print(STATIC_ROOT)
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, '')
 print(
